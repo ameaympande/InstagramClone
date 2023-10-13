@@ -1,0 +1,107 @@
+.main_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  border: 1px solid #dbdbdb;
+  background-color: white;
+  max-width: 350px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sign-up {
+  background-color: white;
+  min-width: 350px;
+  padding: 20px;
+  border: 1px solid #dbdbdb;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sign-up a {
+  text-decoration: none;
+  color: #4db4f9;
+}
+
+.app-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-get-app {
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.links img {
+  height: 40px;
+  margin: 0 10px;
+}
+
+.logo {
+  width: 180px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.btn_login {
+  background-color: #4db4f9;
+  color: white;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-divider {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.facebook-link {
+  display: flex;
+  align-items: center;
+  color: #0095f6;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.facebook-logo {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.label_forgot_pass {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #262626;
+}
+
+.label_forgot_pass a {
+  text-decoration: none;
+  color: #4db4f9;
+}
