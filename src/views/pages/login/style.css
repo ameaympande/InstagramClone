@@ -1,25 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 10px;
+}
+.image-container {
+  position: relative;
+  text-align: center;
+}
+
+.Instagram {
+  max-width: 100%;
+  height: auto;
+}
+
+.screenshot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  transform: translate(62.6%, 4.8%);
+  border-radius: 25px;
+}
+
 .main_box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
 }
 
 .login-box {
   border: 1px solid #dbdbdb;
   background-color: white;
-  max-width: 350px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 328px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sign-up {
   background-color: white;
-  min-width: 350px;
-  padding: 20px;
+  min-width: 300px;
+  padding: 15px;
   border: 1px solid #dbdbdb;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -36,32 +63,34 @@
 }
 
 .label-get-app {
+  margin-top: 5px;
   text-align: center;
+  font-size: 14px;
 }
 
 .links {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .links img {
-  height: 40px;
-  margin: 0 10px;
+  height: 30px;
+  margin: 0 5px;
 }
 
 .logo {
-  width: 180px;
-  margin: 0 auto 20px;
+  width: 150px;
+  margin: 0 auto 10px;
   display: block;
 }
 
 .input {
   width: 100%;
-  padding: 8px;
+  padding: 5px;
   border: 1px solid #dbdbdb;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .btn_login {
@@ -76,7 +105,7 @@
 .custom-divider {
   text-align: center;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .facebook-link {
@@ -84,20 +113,20 @@
   align-items: center;
   color: #0095f6;
   text-decoration: none;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 5px;
   text-align: center;
 }
 
 .facebook-logo {
-  height: 20px;
-  margin-right: 10px;
+  height: 15px;
+  margin-right: 5px;
 }
 
 .label_forgot_pass {
   text-align: center;
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 5px;
+  font-size: 12px;
   color: #262626;
 }
 
