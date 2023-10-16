@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Button, Divider, Grid, Typography } from "@mui/material";
-import logo from "../../../../public/logo.png";
-import facebookLogo from "../../../../public/facebook.svg";
-import microsoft from "../../../../public/microsoft.png";
-import googlePlay from "../../../../public/googlePlay.png";
-import phoneImg from "../../../../public/backgroundimg.png";
-import image1 from "../../../../public/1ss.png";
-import image2 from "../../../../public/2ss.png";
-import image3 from "../../../../public/3ss.png";
-import image4 from "../../../../public/4ss.png";
+/* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
+import { Button, Divider, Typography } from "@mui/material";
+import logo from "/logo.png";
+import facebookLogo from "/facebook.svg";
+import microsoft from "/microsoft.png";
+import googlePlay from "/public/googlePlay.png";
+import phoneImg from "/backgroundimg.png";
+import image1 from "/1ss.png";
+import image2 from "/2ss.png";
+import image3 from "/3ss.png";
+import image4 from "/4ss.png";
 import "./style.css";
 import { isValidUsername } from "../../../helper/validUsername";
+import LoginAPI from "../../../apicalls/LoginAPI";
 
 const imageList = [image1, image2, image3, image4];
 
@@ -41,48 +43,53 @@ const Login = () => {
         ...prevLogin,
         username: value,
       }));
-      if (!isValidUsername(value)) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          username: "Please enter a valid username.",
-        }));
-      } else {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          username: "",
-        }));
-      }
+
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: !isValidUsername(value)
+          ? "Please enter a valid username."
+          : "",
+      }));
     } else if (name === "password") {
       setLogin((prevLogin) => ({
         ...prevLogin,
         password: value,
       }));
-      if (value.length < 8) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          password: "Password must be at least 8 characters.",
-        }));
-      } else {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          password: "",
-        }));
-      }
+
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: value === "" ? "Please enter a valid password." : "",
+      }));
     }
   };
 
-  const handleSubmit = () => {
-    if (login.username === "") {
+  const handleSubmit = async () => {
+    setErrors({ username: "", password: "" });
+
+    if (!login.username.trim()) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         username: "Please enter a valid username.",
       }));
-    } else if (login.password === "") {
+      return;
+    }
+
+    if (!login.password.trim()) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: "Please enter a valid password.",
       }));
-    } else console.log("hello");
+      return;
+    }
+
+    try {
+      const response = await LoginAPI(login.username, login.password);
+      if (response.data.token) {
+        localStorage.setItem("Token", response.data.token);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -98,90 +105,61 @@ const Login = () => {
       <div className="main_box">
         <div className="login-box">
           <img className="logo" src={logo} alt="Logo" />
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <input
-                className={`input username_input ${
-                  errors.username ? "error" : ""
-                }`}
-                placeholder="Phone number, username, or email"
-                aria-required="true"
-                autoCapitalize="off"
-                autoCorrect="off"
-                maxLength="75"
-                type="text"
-                value={login.username}
-                onChange={handleOnChange}
-                name="username"
-              />
-              {errors.username && (
-                <div className="error-message">{errors.username}</div>
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              <input
-                className={`input password_input ${
-                  errors.password ? "error" : ""
-                }`}
-                placeholder="Password"
-                aria-required="true"
-                autoCapitalize="off"
-                autoCorrect="off"
-                maxLength="75"
-                type="password"
-                value={login.password}
-                onChange={handleOnChange}
-                name="password"
-              />
-              {errors.password && (
-                <div className="error-message">{errors.password}</div>
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                className="btn_login"
-                style={{ borderRadius: "10px" }}
-                variant="contained"
-                onClick={handleSubmit}
-              >
-                Log in
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Divider className="custom-divider">OR</Divider>
-            </Grid>
-            <Grid
-              item
-              container
-              xs={12}
-              justifyContent="center"
-              alignItems="center"
+          <input
+            className={`input username_input ${errors.username ? "error" : ""}`}
+            placeholder="Phone number, username, or email"
+            aria-required="true"
+            autoCapitalize="off"
+            autoCorrect="off"
+            maxLength="75"
+            type="text"
+            value={login.username}
+            onChange={handleOnChange}
+            name="username"
+          />
+          {errors.username && (
+            <div className="error-message">{errors.username}</div>
+          )}
+          <input
+            className={`input password_input ${errors.password ? "error" : ""}`}
+            placeholder="Password"
+            aria-required="true"
+            autoCapitalize="off"
+            autoCorrect="off"
+            maxLength="75"
+            type="password"
+            value={login.password}
+            onChange={handleOnChange}
+            name="password"
+          />
+          {errors.password && (
+            <div className="error-message">{errors.password}</div>
+          )}
+          <button className="btn_login" onClick={handleSubmit}>
+            Log in
+          </button>
+          <Divider className="custom-divider">OR</Divider>
+          <div className="facebook-link-container">
+            <a
+              href="https://www.facebook.com"
+              className="facebook-link"
+              target="_blank"
+              rel="noreferrer"
             >
-              <a
-                href="https://www.facebook.com"
-                className="facebook-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={facebookLogo}
-                  alt="Facebook Logo"
-                  className="facebook-logo"
-                />
-                Log in with Facebook
-              </a>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography className="label_forgot_pass" variant="body2">
-                <a href="/forgot-password">Forgot Password?</a>
-              </Typography>
-            </Grid>
-          </Grid>
+              <img
+                src={facebookLogo}
+                alt="Facebook Logo"
+                className="facebook-logo"
+              />
+              Log in with Facebook
+            </a>
+          </div>
+          <Typography mt={2} className="label_forgot_pass" variant="body2">
+            <a href="/forgot-password">Forgot Password?</a>
+          </Typography>
         </div>
         <div className="sign-up">
-          <Typography variant="body2">
-            Don't have an account? <a href="/signup">Sign up</a>
-          </Typography>
+          Don't have an account? <a href="/signup">Sign up</a>
         </div>
         <div className="app-box">
           <div className="label-get-app">

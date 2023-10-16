@@ -1,0 +1,47 @@
+.sidebar {
+  color: #000;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0px;
+  border-right: 1px solid #262626;
+}
+
+.logo {
+  width: 150px;
+  margin-left: 5px;
+  display: block;
+}
+.sidebar-item {
+  display: flex;
+  text-align: center;
+  padding: 13px 0;
+  width: 70%;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon-label {
+  margin-left: 30px;
+}
+.icon-label:hover {
+  color: #685b5b;
+}
+.sidebar-item:hover {
+  color: #685b5b;
+}
+
+.active {
+  color: #000;
+  font-weight: bold;
+  margin-left: 0;
+}
