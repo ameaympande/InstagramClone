@@ -11,6 +11,12 @@
   margin-left: 0;
 }
 
+@media (max-width: 1257px) {
+  .suggestbar {
+    display: none;
+  }
+}
+
 .suggestbar-item {
   margin-top: 0;
   margin-left: 0;

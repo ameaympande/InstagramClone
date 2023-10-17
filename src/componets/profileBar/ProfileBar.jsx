@@ -3,14 +3,13 @@ import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
-
+import "./style.css";
 import { red } from "@mui/material/colors";
 
 const SuggestionCard = styled(Card)({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "space-between", // Added to push the link to the right
   backgroundColor: "transparent",
   borderRadius: "8px",
   boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
@@ -36,8 +35,6 @@ const Fullname = styled("div")({
 const LinkContainer = styled("div")({
   display: "flex",
   alignItems: "center",
-  position: "fixed",
-  marginLeft: "234px",
 });
 
 const FollowLink = styled("a")({
@@ -60,24 +57,26 @@ export default function InstagramSuggestionCard({
   action,
 }) {
   return (
-    <SuggestionCard>
-      <Avatar
-        sx={{
-          bgcolor: red[500],
-          width: 44,
-          height: 44,
-        }}
-        src={profilePhoto}
-      >
-        {profilePhoto ? profilePhoto : "I"}
-      </Avatar>
-      <SuggestionCardContent>
-        <Username>{username}</Username>
-        <Fullname>{fullname}</Fullname>
-      </SuggestionCardContent>
-      <LinkContainer>
-        <FollowLink href="#">{action}</FollowLink>
-      </LinkContainer>
-    </SuggestionCard>
+    <div className="container">
+      <SuggestionCard>
+        <Avatar
+          sx={{
+            bgcolor: red[500],
+            width: 44,
+            height: 44,
+          }}
+          src={profilePhoto}
+        >
+          {profilePhoto ? profilePhoto : "I"}
+        </Avatar>
+        <SuggestionCardContent>
+          <Username>{username}</Username>
+          <Fullname>{fullname}</Fullname>
+        </SuggestionCardContent>
+        <LinkContainer>
+          <FollowLink href="#">{action}</FollowLink>
+        </LinkContainer>
+      </SuggestionCard>
+    </div>
   );
 }

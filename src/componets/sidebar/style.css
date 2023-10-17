@@ -12,11 +12,19 @@
   border-right: 1px solid #262626;
 }
 
+.sidebar-items {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 .logo {
   width: 150px;
-  margin-left: 5px;
+  margin: 0 auto;
   display: block;
 }
+
 .sidebar-item {
   display: flex;
   text-align: center;
@@ -31,11 +39,14 @@
 }
 
 .icon-label {
+  font-size: 18px;
   margin-left: 30px;
 }
+
 .icon-label:hover {
   color: #685b5b;
 }
+
 .sidebar-item:hover {
   color: #685b5b;
 }
@@ -44,4 +55,36 @@
   color: #000;
   font-weight: bold;
   margin-left: 0;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    background: transparent;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #262626;
+    padding: 10px 0;
+  }
+  .logo {
+    display: none;
+  }
+  .sidebar-items {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sidebar-item {
+    flex: 1;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .icon-label {
+    font-size: 14px;
+    display: none;
+  }
 }

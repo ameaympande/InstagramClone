@@ -22,43 +22,63 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <img className="logo" src={logo} alt="Logo" />
-      <div className="sidebar-item active">
-        <Home />
-        <span className="icon-label">Home</span>
-      </div>
-      <div className="sidebar-item">
-        <Search />
-        <span className="icon-label">Explore</span>
-      </div>
-      <div className="sidebar-item">
-        <Heart />
-        <span className="icon-label">Activity</span>
-      </div>
-      <div className="sidebar-item">
-        <MessageSquare />
-        <span className="icon-label">Messages</span>
-      </div>
-      <div className="sidebar-item">
-        <Clapperboard />
-        <span className="icon-label">Reels</span>
-      </div>
-      <div className="sidebar-item">
-        <Compass />
-        <span className="icon-label">Discover</span>
-      </div>
-      <div className="sidebar-item">
-        <BadgePlus />
-        <span className="icon-label">Create</span>
-      </div>
-      <div className="sidebar-item">
-        <Circle />
-        <span className="icon-label">Profile</span>
-      </div>
-      <div className="sidebar-item">
-        <LogOut />
-        <span className="icon-label" onClick={handleLogOut}>
-          Log out
-        </span>
+      <div className="sidebar-items">
+        <div className="sidebar-item active">
+          <div>
+            <Home size={28} />
+          </div>
+          <span className="icon-label">Home</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <Search size={28} />
+          </div>
+          <span className="icon-label">Explore</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <Heart size={28} />
+          </div>
+          <span className="icon-label">Activity</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <MessageSquare size={28} />
+          </div>
+          <span className="icon-label">Messages</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <Clapperboard size={28} />
+          </div>
+          <span className="icon-label">Reels</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <Compass size={28} />
+          </div>
+          <span className="icon-label">Discover</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <BadgePlus size={28} />
+          </div>
+          <span className="icon-label">Create</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <Circle size={28} />
+          </div>
+          <span className="icon-label">Profile</span>
+        </div>
+        <div className="sidebar-item">
+          <div>
+            <LogOut size={28} />
+          </div>
+          <span className="icon-label" onClick={handleLogOut}>
+            Log out
+          </span>
+        </div>
       </div>
     </div>
   );
