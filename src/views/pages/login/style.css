@@ -58,6 +58,9 @@
   text-decoration: none;
   color: #4db4f9;
 }
+.sign-up > a:hover {
+  text-decoration: underline;
+}
 
 .app-box {
   display: flex;
@@ -123,14 +126,16 @@
 .facebook-link-container {
   align-items: center;
   color: #0095f6;
-  text-decoration: none;
   font-size: 12px;
   margin-top: 5px;
   text-align: center;
 }
-
+.facebook-link-container a {
+  text-decoration: none;
+  font-size: 14px;
+}
 .facebook-logo {
-  height: 15px;
+  height: 25px;
   margin-right: 5px;
 }
 
@@ -144,6 +149,10 @@
 .label_forgot_pass a {
   text-decoration: none;
   color: #4db4f9;
+}
+
+.label_forgot_pass a:hover {
+  text-decoration: underline;
 }
 
 .error-message {
