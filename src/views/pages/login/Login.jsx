@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
-import { Button, Divider, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import logo from "/logo.png";
 import facebookLogo from "/facebook.svg";
 import microsoft from "/microsoft.png";
@@ -13,10 +13,12 @@ import image4 from "/4ss.png";
 import "./style.css";
 import { isValidUsername } from "../../../helper/validUsername";
 import LoginAPI from "../../../apicalls/LoginAPI";
+import { useNavigate } from "react-router-dom";
 
 const imageList = [image1, image2, image3, image4];
 
 const Login = () => {
+  const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [login, setLogin] = useState({
     username: "",
@@ -86,6 +88,7 @@ const Login = () => {
       const response = await LoginAPI(login.username, login.password);
       if (response.data.token) {
         localStorage.setItem("Token", response.data.token);
+        navigate("/");
       }
     } catch (error) {
       console.error(error);

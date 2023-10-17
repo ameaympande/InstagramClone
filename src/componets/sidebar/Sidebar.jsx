@@ -1,18 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 import logo from "/logowhite.svg";
 import {
-  AlignJustify,
   BadgePlus,
   Circle,
   Clapperboard,
   Compass,
   Heart,
   Home,
+  LogOut,
   MessageSquare,
   Search,
 } from "lucide-react";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="sidebar">
       <img className="logo" src={logo} alt="Logo" />
@@ -49,8 +55,10 @@ const Sidebar = () => {
         <span className="icon-label">Profile</span>
       </div>
       <div className="sidebar-item">
-        <AlignJustify />
-        <span className="icon-label">More</span>
+        <LogOut />
+        <span className="icon-label" onClick={handleLogOut}>
+          Log out
+        </span>
       </div>
     </div>
   );
